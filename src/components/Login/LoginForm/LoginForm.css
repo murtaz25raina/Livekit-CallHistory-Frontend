@@ -1,0 +1,15 @@
+.login-form-container {
+  @apply w-full max-w-md md:max-w-lg p-8 md:p-12 rounded-md shadow-md bg-white;
+}
+
+.login-form-input-container {
+  @apply flex flex-col gap-y-3;
+}
+
+.login-submit-button {
+  @apply flex justify-center gap-x-3 bg-[#7269ef] cursor-pointer py-2 w-full rounded-sm text-lg font-medium hover:bg-indigo-500 transition-all duration-300;
+}
+
+.login-submit-button-text {
+  @apply text-white;
+}

@@ -1,0 +1,7 @@
+.login-header-container {
+  @apply space-y-3 mb-5 flex flex-col justify-center items-center;
+}
+
+.login-header-title {
+  @apply text-2xl text-[#343a40];
+}

@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+html {
+  @apply h-screen w-screen;
+}
+
+body {
+  @apply h-full w-full font-sans;
+}
+
+#root {
+  @apply h-full w-full;
+} */
+
+body {
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+}

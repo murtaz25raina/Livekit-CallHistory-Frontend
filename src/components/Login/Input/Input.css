@@ -1,0 +1,31 @@
+.login-input-container {
+  @apply mb-4;
+}
+
+.login-input-label {
+  @apply block text-gray-700 text-sm font-bold mb-2;
+}
+
+.login-input-label-text {
+  @apply block text-gray-700 text-sm font-bold mb-2;
+}
+
+.login-input-field-container {
+  @apply flex border rounded-sm cursor-text;
+}
+
+.login-input-icon {
+  @apply bg-gray-200 flex justify-center items-center px-3 border-r;
+}
+
+.login-input-icon-size {
+  @apply w-5 h-5 text-gray-500;
+}
+
+.login-input-field {
+  @apply w-full text-sm text-gray-700 outline-none py-2 pl-2;
+}
+
+.login-input-error {
+  @apply text-red-500 py-2 text-sm;
+}

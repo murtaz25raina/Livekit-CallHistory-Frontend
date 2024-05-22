@@ -1,0 +1,11 @@
+.right-panel {
+  @apply w-full h-screen md:translate-x-0 bg-white flex flex-col shadow-md relative;
+}
+
+.right-panel-centered-content {
+  @apply h-full flex justify-center items-center;
+}
+
+.right-panel-info-box {
+  @apply bg-indigo-600 py-1 px-3 w-fit rounded-lg text-white;
+}

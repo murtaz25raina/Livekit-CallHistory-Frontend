@@ -1,0 +1,3 @@
+.chat-send-button {
+    @apply text-[#96999e] hover:text-[#4f52b2] transition-all delay-100;
+}

@@ -1,0 +1,3 @@
+.sidebar-container {
+    @apply h-screen flex flex-col w-16 items-center py-2 bg-[#ebebeb];
+}

@@ -1,0 +1,27 @@
+.message-popup {
+  @apply bg-white text-sm top-5 absolute border shadow-2xl rounded-md z-20 flex flex-col right-2;
+}
+
+.message-popup-btn {
+  @apply flex space-x-4 hover:bg-[rgba(114,108,196)]/30 px-4 py-2;
+}
+
+.message-popup-icon {
+  @apply w-5 h-5 text-[#818a95];
+}
+
+.message-popup-option {
+  @apply text-[#818a95];
+}
+
+.message-popup-icon-danger {
+  @apply w-5 h-5 text-red-600;
+}
+
+.message-popup-delete-option {
+  @apply text-red-600;
+}
+
+.message-popup-separator {
+  @apply mt-2;
+}

@@ -1,0 +1,15 @@
+.message-info-container {
+  @apply flex gap-2 items-center mb-1 justify-end;
+}
+
+.message-sender-info {
+  @apply text-sm capitalize text-gray-500;
+}
+
+.message-sent-time {
+    @apply text-sm capitalize text-gray-500;
+}
+
+.message-edit-time {
+  @apply text-xs capitalize text-gray-500;
+}

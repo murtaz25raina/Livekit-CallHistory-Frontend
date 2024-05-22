@@ -1,0 +1,27 @@
+.room-list-header-container {
+  @apply flex items-center justify-between cursor-pointer px-1;
+}
+
+.room-list-header-section {
+  @apply flex gap-x-2 items-center;
+}
+
+.room-list-header-icon {
+  @apply w-5 h-5 text-[#939daf] rounded-md;
+}
+
+.room-list-header-title {
+  @apply text-sm;
+}
+
+.room-list-more-icon {
+  @apply hover:bg-[#e6e8eb];
+}
+
+.room-list-plus-icon {
+  @apply bg-[#e6e8eb];
+}
+
+.room-list-icon-wrapper {
+    @apply flex items-center gap-x-2;
+}

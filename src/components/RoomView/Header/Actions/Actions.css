@@ -1,0 +1,11 @@
+.chat-room-action-icons-container {
+  @apply flex gap-x-2 items-center text-[#818a95];
+}
+
+.chat-room-action-icon {
+  @apply cursor-pointer;
+}
+
+.chat-room-action-icon-container {
+  @apply p-1 hover:bg-[#e3f7ed] rounded-sm hover:text-[#007a61] transition-all delay-100;
+}

@@ -1,0 +1,3 @@
+.chat-room-header {
+  @apply py-3 px-5 flex justify-between border-b w-full bg-white;
+}

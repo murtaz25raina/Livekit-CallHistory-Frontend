@@ -1,0 +1,7 @@
+.left-panel-header {
+  @apply flex justify-between px-5 mb-4 items-center;
+}
+
+.left-panel-title {
+  @apply text-2xl text-[#343a40];
+}

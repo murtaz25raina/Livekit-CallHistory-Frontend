@@ -1,0 +1,27 @@
+.message-self-chat-container {
+  @apply flex gap-x-2;
+}
+
+.message-self-message-container {
+  @apply relative right-9 lg:max-w-4xl;
+}
+
+.message-self-message-separator {
+  @apply w-2 h-2 absolute right-0 -bottom-2 border-t-[10px] border-t-transparent border-r-[10px] border-r-[#f5f7fb] border-b-[10px] border-b-transparent;
+}
+
+.message-self-text-sm {
+  @apply text-sm text-[#343a40] float-right;
+}
+
+.message-self-message-option-container {
+  @apply w-4 h-4 cursor-pointer right-9 relative text-[#7a7f9a];
+}
+
+.message-self-sender-info {
+  @apply text-sm capitalize text-gray-500;
+}
+
+.message-menu-more-icon {
+  @apply w-8 h-8 z-10 p-1 bg-white absolute top-5 right-0 text-base cursor-pointer text-[#939daf] rounded-md hover:bg-[#e6e8eb];
+}

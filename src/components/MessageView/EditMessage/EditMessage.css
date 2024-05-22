@@ -1,0 +1,11 @@
+.message-edit-icon {
+  @apply text-2xl text-[#818a95];
+}
+
+.message-option-action-container {
+  @apply block p-2 rounded-sm hover:bg-[#e6e8eb];
+}
+
+.message-edit-input {
+  @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 flex w-[500px] p-2.5;
+}

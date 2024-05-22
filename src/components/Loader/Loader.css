@@ -1,0 +1,7 @@
+.loader-container {
+  @apply flex items-center justify-center;
+}
+
+.loader {
+    @apply h-6 w-6 animate-spin bg-transparent rounded-full border-4 border-solid border-[#ddd] border-t-transparent;
+}

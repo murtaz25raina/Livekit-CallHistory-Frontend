@@ -1,0 +1,19 @@
+.message-avatar-circle {
+  @apply h-8 w-8 rounded-full relative bottom-0 right-0 bg-[#e3e1fc] flex justify-center items-center cursor-pointer;
+}
+
+.message-text-xl {
+  @apply text-[rgb(114,105,239)] text-base font-bold;
+}
+
+.message-status-indicator {
+  @apply bottom-0 left-6 absolute w-3 h-3 border-2 border-white dark:border-gray-800 rounded-full;
+}
+
+.message-online {
+  @apply bg-green-500;
+}
+
+.message-offline {
+  @apply bg-red-500;
+}

@@ -1,0 +1,23 @@
+.collapsible-header {
+  @apply text-[#656d77] cursor-pointer flex justify-between items-center m-2 text-sm font-medium;
+}
+
+.collapsible-header-wrapper {
+  @apply flex items-center gap-1;
+}
+
+.collapsible-options-wrapper {
+  @apply flex items-center gap-3;
+}
+
+.collapsible-icon {
+  @apply text-[#818a95];
+}
+
+.collapsible-option-icon {
+    @apply text-[#818a95] p-1 hover:bg-gray-100 rounded-md;
+  }
+
+/* .open {
+  transform: rotate(45deg);
+} */

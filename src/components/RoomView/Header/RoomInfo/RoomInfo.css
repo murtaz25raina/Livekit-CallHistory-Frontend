@@ -1,0 +1,11 @@
+.chat-room-info-container {
+  @apply flex gap-x-3 items-center;
+}
+
+.chat-room-user-icon {
+  @apply w-8 h-8 text-[#ddd] cursor-pointer;
+}
+
+.chat-room-username {
+  @apply font-semibold text-black;
+}

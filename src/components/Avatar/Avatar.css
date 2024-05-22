@@ -1,0 +1,11 @@
+.avatar-container {
+    @apply relative inline-flex items-center justify-center w-8 h-8 overflow-hidden bg-gray-100 rounded-full;
+}
+
+.avatar-content {
+    @apply font-medium text-[#4c05b5];
+}
+
+.avatar-img {
+    @apply w-8 h-8 rounded-full;
+}

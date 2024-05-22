@@ -1,0 +1,19 @@
+.left-panel-container {
+  @apply h-screen w-full min-w-[350px] overflow-y-auto flex flex-col bg-[#f5f5f5e6] py-2;
+}
+
+.collapsible-panel-container {
+  @apply p-2 relative;
+}
+
+.left-panel-container::-webkit-scrollbar {
+  @apply w-[6px];
+}
+
+.left-panel-container::-webkit-scrollbar-thumb {
+  @apply bg-[#999] rounded-full;
+}
+
+.left-panel-container::-webkit-scrollbar-track {
+  @apply bg-[#f1f1f1];
+}

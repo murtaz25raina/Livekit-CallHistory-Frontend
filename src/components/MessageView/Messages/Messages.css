@@ -1,0 +1,23 @@
+.messages-chat-container {
+  @apply flex flex-col gap-y-5 py-3 overflow-y-auto px-5 xl:px-10 h-full transition-all duration-300 bg-white;
+}
+
+.messages-chat-container::-webkit-scrollbar {
+  @apply w-[6px];
+}
+
+.messages-chat-container::-webkit-scrollbar-thumb {
+  @apply bg-[#999] rounded-full;
+}
+
+.messages-chat-container::-webkit-scrollbar-track {
+  @apply bg-[#f1f1f1];
+}
+
+.message-peer-message-option-icon {
+  @apply w-4 h-4 cursor-pointer relative right-9 text-[#7a7f9a];
+}
+
+.message-self-message-option-container {
+  @apply w-4 h-4 cursor-pointer relative text-[#7a7f9a];
+}

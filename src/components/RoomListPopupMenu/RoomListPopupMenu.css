@@ -1,0 +1,23 @@
+.room-popup {
+  @apply bg-white text-sm absolute top-10 border shadow-2xl rounded-md z-10 flex flex-col right-0;
+}
+
+.room-popup-btn {
+  @apply flex space-x-6 hover:bg-[rgba(114,108,196)]/30 px-4 py-2;
+}
+
+.room-popup-icon {
+    @apply w-5 h-5 text-[#818a95];
+}
+
+.room-popup-icon-danger {
+    @apply w-5 h-5 text-red-600;
+}
+
+.room-popup-leave-option {
+    @apply text-red-600;
+}
+
+.room-popup-separator {
+    @apply mt-2;
+}

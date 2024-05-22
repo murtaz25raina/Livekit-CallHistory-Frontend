@@ -1,0 +1,3 @@
+.chat-attachment-button {
+  @apply w-4 h-4 !text-[#5965e1] cursor-pointer;
+}

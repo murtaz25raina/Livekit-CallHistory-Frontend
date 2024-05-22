@@ -1,0 +1,15 @@
+.room-list-menu-container {
+  @apply flex flex-col gap-y-1 justify-center items-center;
+}
+
+.room-list-menu-text {
+  @apply text-[#7a7f9a] text-xs whitespace-nowrap;
+}
+
+.room-list-menu-notification-badge {
+  @apply bg-[rgba(239,71,111,.18)] text-xs text-[#ef476f] h-[20px] w-[20px] rounded-[50px] flex justify-center items-center;
+}
+
+.room-list-menu-more-icon {
+  @apply w-5 h-5 text-[#939daf] rounded-md hover:bg-[#e6e8eb];
+}

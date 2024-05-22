@@ -1,0 +1,11 @@
+.chat-panel {
+  @apply h-full w-full;
+}
+
+.chat-panel-container {
+  @apply h-full w-full flex relative md:relative overflow-hidden;
+}
+
+.chat-left-panel-container {
+  @apply h-full w-full md:w-96 absolute md:relative;
+}

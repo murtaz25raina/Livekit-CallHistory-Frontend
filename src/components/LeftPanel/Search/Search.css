@@ -1,0 +1,11 @@
+.left-panel-search-container {
+  @apply flex justify-center mx-6 bg-[rgb(230,235,245)] rounded-sm items-center mb-2;
+}
+
+.left-panel-search-icon {
+  @apply w-7 h-7 text-[#999898] ml-3;
+}
+
+.left-panel-search-input {
+  @apply py-3 rounded-md w-full outline-none border bg-transparent indent-2 placeholder:text-base;
+}
