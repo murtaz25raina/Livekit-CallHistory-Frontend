@@ -1,0 +1,71 @@
+.n-call-history-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.n-call-entry {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    grid-gap: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.n-call-entry:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.n-call-detail {
+    display: flex;
+    align-items: center;
+}
+
+.n-label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #555;
+}
+
+.n-caller-name {
+    color: #2c3e50;
+}
+
+.n-call-type {
+    color: #8e44ad;
+}
+
+.n-call-status {
+    color: #27ae60;
+}
+
+.n-call-time {
+    color: #2980b9;
+}
+
+.n-call-duration {
+    color: #e67e22;
+}
+
+.n-receiver-name {
+    color: #c0392b;
+}
+
+.n-no-call-history {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+}

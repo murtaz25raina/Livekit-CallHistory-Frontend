@@ -32,6 +32,8 @@ import { AppDispatch } from "redux/app/store";
 import { io } from "socket.io-client";
 import { selectCurrentRoomState } from "redux/stores/currentRoom/currentRoomSlice";
 import axios from "axios";
+import { selectCallHistoryState, setCallHistory, setCurrentCall } from "redux/stores/callHistory/callHistory";
+import { getCurrentTimeString } from "helpers/currentTime";
 
 const socket = io("http://localhost:3001");
 
@@ -54,6 +56,7 @@ const VideoCallModal = () => {
   const { client } = useClientContext();
   const userName = client.getUserIdLocalpart() || "";
   const { currentRoomId } = useSelector(selectCurrentRoomState);
+  const {calls,currentCall} = useSelector(selectCallHistoryState);
 
   const videoCallLivekitHandler = async () => {
     try {
@@ -66,6 +69,16 @@ const VideoCallModal = () => {
       dispatch(setAmICalling(false));
       dispatch(setRoomName(roomName));
       // dispatch(setOnCall(true))
+
+
+      let cCall = {...currentCall};
+      cCall.callStartTime = getCurrentTimeString();
+      cCall.callStatus = "recieved"
+      let allCalls = [...calls];
+      let filteredCalls = allCalls.filter(c => c.callId !== cCall.callId)
+      filteredCalls.push(cCall);
+      dispatch(setCurrentCall(cCall))
+      dispatch(setCallHistory(filteredCalls));
     } catch (error) {
       console.error("Error fetching token:", error);
     }
@@ -76,8 +89,9 @@ const VideoCallModal = () => {
   };
 
   const handleRejectCall = async () => {
-    let thisRoom = client?.getRoom(currentRoomId);
-    let membersInRoom = thisRoom?.getMembers();
+    // let thisRoom = client?.getRoom(currentRoomId);
+    // let membersInRoom = thisRoom?.getMembers();
+    let membersInRoom = [...membersWhoAreGettingCall]
     // dispatch(setOnCall(false))
     dispatch(
       setCallDetails({
@@ -90,26 +104,57 @@ const VideoCallModal = () => {
         AmICalling: false,
       })
     );
+
+    let allCalls = [...calls];
+    let newCallDetail = { ...currentCall };
+    newCallDetail.callStatus = "rejected";
+    dispatch(setCurrentCall(newCallDetail));
+    let filteredCalls = allCalls.filter(
+      (c) => c.callId !== newCallDetail.callId
+    );
+    filteredCalls.push(newCallDetail);
+    dispatch(setCallHistory(filteredCalls));
+
     socket.emit(
       "rejectCall",
       userName,
       userWhoIsCalling,
       roomName,
-      membersInRoom
+      membersInRoom,
+      newCallDetail,
     );
   };
 
   const handleCancelCall = () => {
-    let thisRoom = client?.getRoom(currentRoomId);
-    let membersInRoom = thisRoom?.getMembers();
+    // let thisRoom = client?.getRoom(currentRoomId);
+    // let membersInRoom = thisRoom?.getMembers();
+    let membersInRoom = [...membersWhoAreGettingCall]
+    ///
     dispatch(setIsCalling(null));
     dispatch(setAmICalling(false));
     // dispatch(setOnCall(false))
+    let allCalls = [...calls];
+    let newCallDetail = { ...currentCall };
+    newCallDetail.callStatus = "cancelled";
+    dispatch(setCurrentCall(newCallDetail));
+    let filteredCalls = allCalls.filter(
+      (c) => c.callId !== newCallDetail.callId
+    );
+    filteredCalls.push(newCallDetail);
+    dispatch(setCallHistory(filteredCalls));
     socket.emit("cancelCall", userName, membersInRoom, roomName);
   };
 
   const onUserJoinedCall = () => {
-    socket.emit("acceptCall", userName, userWhoIsCalling, roomName, callType);
+    let cCall = {...currentCall};
+    // cCall.callStartTime = getCurrentTimeString();
+    // cCall.callStatus = "recieved"
+    // let allCalls = [...calls];
+    // let filteredCalls = allCalls.filter(c => c.callId !== cCall.callId)
+    // filteredCalls.push(cCall);
+    // dispatch(setCurrentCall(cCall))
+    // dispatch(setCallHistory(filteredCalls));
+    socket.emit("acceptCall", userName, userWhoIsCalling, roomName, callType, cCall);
     dispatch(setAmICalling(false));
     // dispatch(setOnCall(true))
   };
@@ -119,26 +164,50 @@ const VideoCallModal = () => {
     // dispatch(setIsCalling(null));
     // dispatch(setOnCall(false))
 
-    try {
-      const response = await axios.get(
-        "http://localhost:3001/getParticipants",
-        {
-          params: {
-            roomName: roomName,
-          },
-        }
-      );
-      const res = response.data.data;
-      if (res && res.length === 0) {
+    let membersInRoom = [...membersWhoAreGettingCall]
+    let cCall = {...currentCall};
+        cCall.callEndTime = getCurrentTimeString();
+        // console.log("callDetails",cCall);
+        let allCalls = [...calls];
+        let filteredCalls = allCalls.filter(c => c.callId !== cCall.callId)
+        filteredCalls.push(cCall);
+        dispatch(setCurrentCall(cCall))
+        dispatch(setCallHistory(filteredCalls));
+        socket.emit("leaveCall", cCall.callerName, membersInRoom, roomName,cCall);
+
+    // try {
+    //   const response = await axios.get(
+    //     "http://localhost:3001/getParticipants",
+    //     {
+    //       params: {
+    //         roomName: roomName,
+    //       },
+    //     }
+    //   );
+    //   const res = response.data.data;
+    //   if (res && res.length == 1) {
 
         // console.log("booom",res)
-        let thisRoom = client?.getRoom(currentRoomId);
-        let membersInRoom = thisRoom?.getMembers();
-        socket.emit("cancelCall", userName, membersInRoom, roomName);
-      }
-    } catch (err) {
-      console.error("Error fetching participants:", err);
-    }
+        // let thisRoom = client?.getRoom(currentRoomId);
+        // let membersInRoom = thisRoom?.getMembers();
+        // ////
+        // let membersInRoom = [...membersWhoAreGettingCall]
+        // ///////
+        // console.log(userName, membersInRoom, roomName)
+        // socket.emit("cancelCall", userName, membersInRoom, roomName);
+
+        // let cCall = {...currentCall};
+        // cCall.callEndTime = getCurrentTimeString();
+        // let allCalls = [...calls];
+        // let filteredCalls = allCalls.filter(c => c.callId !== cCall.callId)
+        // filteredCalls.push(cCall);
+        // dispatch(setCurrentCall(cCall))
+        // dispatch(setCallHistory(filteredCalls));
+        // socket.emit("leaveCall", userName, membersInRoom, roomName,cCall);
+    //   }
+    // } catch (err) {
+    //   console.error("Error fetching participants:", err);
+    // }
     // console.log("room",roomName)
     dispatch(
       setCallDetails({

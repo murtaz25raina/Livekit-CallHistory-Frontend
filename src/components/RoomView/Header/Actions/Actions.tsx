@@ -14,12 +14,23 @@ import { useClientContext } from "providers/ClientProvider";
 import { useMatrixSync } from "providers/CallProvider";
 import { MediaType } from "../../../../helpers/constant";
 import { AppDispatch } from "redux/app/store";
-import { setAmICalling, setCallDetails, setCallType, 
-  // setOnCall 
+import {
+  setAmICalling,
+  setCallDetails,
+  setCallType,
+  setMembersWhoAreGettingCall,
+  // setOnCall
 } from "redux/stores/callingDetails/callingDetails";
 import { io } from "socket.io-client";
+import {
+  selectCallHistoryState,
+  setCallHistory,
+  setCurrentCall,
+} from "redux/stores/callHistory/callHistory";
+import { getCurrentTimeString } from "helpers/currentTime";
+import useRoom from "hooks/useRoom";
 
-const socket = io('http://localhost:3001');
+const socket = io("http://localhost:3001");
 
 const Actions: FC = () => {
   const { id } = useParams();
@@ -30,7 +41,9 @@ const Actions: FC = () => {
   const { client } = useClientContext();
   const userName = client.getUserIdLocalpart() || "";
   const navigate = useNavigate();
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<AppDispatch>();
+  const { calls } = useSelector(selectCallHistoryState);
+
 
   useEffect(() => {
     let room = client?.getRoom(currentRoomId);
@@ -42,16 +55,42 @@ const Actions: FC = () => {
     return name?.replace(/(serverlinuxguidesde)/i, "");
   };
 
-
-
-  const makeACallHandler = (call_type:string) =>{
+  const makeACallHandler = (call_type: string) => {
     let thisRoom = client?.getRoom(currentRoomId);
     let membersInRoom = thisRoom?.getMembers();
-    dispatch(setAmICalling(true))
-    dispatch(setCallType(call_type))
+    dispatch(setAmICalling(true));
+    dispatch(setCallType(call_type));
+    let membersToCall:string[] = [];
+    // console.log("ok",members);
+    if(membersInRoom){
+      membersInRoom.forEach((member) => {
+        // console.log(member)
+        if(member.name !== userName){
+          membersToCall.push(member.name);
+        }
+      })
+    }
+    dispatch(setMembersWhoAreGettingCall(membersToCall))
     // dispatch(setOnCall(true));
-    socket.emit('call',currentRoomId,userName,membersInRoom,call_type);
-  }
+    const currentTime = getCurrentTimeString();
+    let room = client?.getRoom(currentRoomId);
+    const rName = room?.getDefaultRoomName(currentRoomId) || ""
+    let allCalls = [...calls];
+    const callDetail = {
+      callId : currentRoomId+currentTime,
+      callerName: userName,
+      callType: call_type,
+      callTime:currentTime,
+      callStartTime: "",
+    callEndTime: "",
+      callStatus: "Didn't respond",
+      recieverName: rName,
+    }
+    allCalls.push(callDetail);
+    dispatch(setCurrentCall(callDetail));
+    dispatch(setCallHistory(allCalls));
+    socket.emit("call", currentRoomId, userName, membersToCall, call_type,callDetail);
+  };
 
   const handleCallButtonClick = useCallback(
     (callType: string) => {

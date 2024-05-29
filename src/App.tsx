@@ -12,6 +12,7 @@ import { UseModelProvider } from "providers/useModalProvider";
 import { MatrixSyncProvider } from "providers/CallProvider";
 import Login from "components/Login/Login";
 import "react-toastify/dist/ReactToastify.css";
+import CallHistoryComponent from "components/CallHistory/CallHistory";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
                       <Route path="/chat" element={<ChatPanel />}>
                         <Route path="/chat:id" element={<RoomView />} />
                       </Route>
+                      <Route path="/call-history" element={<CallHistoryComponent/>} />
                     </Route>
                   </Routes>
                 </Suspense>

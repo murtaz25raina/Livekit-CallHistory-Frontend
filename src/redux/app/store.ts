@@ -9,6 +9,7 @@ import presenceReducer from "../stores/presence/presenceSlice";
 import clientReducer from "../stores/client/client";
 import NotificationReducer from "../stores/Notification/Notification";
 import callDetailsReducer from "../stores/callingDetails/callingDetails";
+import callHistoryReducer from "../stores/callHistory/callHistory";
 
 export const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ export const store = configureStore({
     client: clientReducer,
     notification: NotificationReducer,
     callDetails : callDetailsReducer,
+    callHistory : callHistoryReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

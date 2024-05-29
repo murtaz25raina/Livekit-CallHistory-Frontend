@@ -8,6 +8,8 @@ import {
   Chat24Regular,
   SignOut24Filled,
   SignOut24Regular,
+  Call24Regular,
+  Call24Filled 
 } from "@fluentui/react-icons";
 import TabList from "../TabList/TabList";
 import "./Sidebar.css";
@@ -29,6 +31,12 @@ const Sidebar: FC = () => {
       filledIcon: <SignOut24Filled />,
       title: "Logout",
       navigate: "/login",
+    },
+    {
+      regularIcon: <Call24Regular />,
+      filledIcon: <Call24Filled />,
+      title: "History",
+      navigate: "/call-history",
     },
   ];
   return (
